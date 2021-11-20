@@ -218,18 +218,19 @@ function init() {
 
   //***************************
 
-  let wallGeometry_back = new THREE.PlaneGeometry(800, 1500);
+  let wallGeometry_back = new THREE.BoxGeometry(150, 150,150);
   color.setHSL(Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75);
   const wall_material_back = new THREE.MeshBasicMaterial({
     color: color,
     side: THREE.DoubleSide
   });
   const wall_plane_back = new THREE.Mesh(wallGeometry_back, wall_material_back);
-  wall_plane_back.position.set(75, 35, -2000);
+  wall_plane_back.position.set(0, 35, -200);
+  //wall_plane_back.rotation.y = -90;
 
   scene.add(wall_plane_back);
 
-  let wallGeometry_right = new THREE.PlaneGeometry(1600, 1500);
+  let wallGeometry_right = new THREE.SphereGeometry(50, 300, 300);
   color.setHSL(Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75);
   const wall_material_right = new THREE.MeshBasicMaterial({
     color: color,
@@ -239,19 +240,19 @@ function init() {
     wallGeometry_right,
     wall_material_right
   );
-  wall_plane_right.position.set(1025, 35, -175);
-  wall_plane_right.rotation.y = -90;
+  wall_plane_right.position.set(0, 60, 200);
+ // wall_plane_right.rotation.y = -90;
   scene.add(wall_plane_right);
 
-  let wallGeometry_left = new THREE.PlaneGeometry(1600, 1500);
+  let wallGeometry_left = new THREE.PlaneGeometry(300, 300);
   color.setHSL(Math.random() * 0.3 + 0.5, 0.75, Math.random() * 0.25 + 0.75);
   const wall_material_left = new THREE.MeshBasicMaterial({
     color: color,
     side: THREE.DoubleSide
   });
   const wall_plane_left = new THREE.Mesh(wallGeometry_left, wall_material_left);
-  wall_plane_left.position.set(-1075, 35, -175);
-  wall_plane_left.rotation.y = -90;
+  wall_plane_left.position.set(0, 35, 0);
+ // wall_plane_left.rotation.y = -90;
   scene.add(wall_plane_left);
 
   let wallGeometry_top = new THREE.PlaneGeometry(1600, 1500);
@@ -317,7 +318,7 @@ function init() {
       mesh.scale.set(80, 80, 80);
       mesh.rotation.y = -45;
       // Add model to scene
-      scene.add(mesh);
+    //  scene.add(mesh);
     },
     undefined,
     function(error) {
@@ -341,7 +342,7 @@ function init() {
       mesh2.scale.set(100, 100, 100);
       mesh2.rotation.y = 250;
       // Add model to scene
-      scene.add(mesh2);
+  //    scene.add(mesh2);
     },
     undefined,
     function(error) {
@@ -366,7 +367,7 @@ function init() {
       mesh3.scale.set(60, 60, 60);
       mesh3.rotation.y = 175;
       // Add model to scene
-      scene.add(mesh3);
+    //  scene.add(mesh3);
     },
     undefined,
     function(error) {
@@ -643,7 +644,7 @@ function animate() {
   }
   // rabbit 1/*
 
-  if (camera.position.z <= -200) {
+  if (camera.position.z <= -200&& camera.position.x<=0) {
     if (count1 >= 0) {
       count1--;
       mesh4.position.set(mesh4.position.x, 8, mesh4.position.z);
@@ -701,7 +702,7 @@ function animate() {
  */
     // ***************rabbit2
     if (move1 == 1) {
-      if (camera.position.z <= -200) {
+      if (camera.position.z <= -200 && camera.position.x<=0) {
         if (count1 >= 0) {
           count1--;
           mesh6.position.set(mesh6.position.x, 5, mesh6.position.z);
@@ -778,7 +779,7 @@ function animate() {
   */
     //********************rabbit 3
     if (move == 1) {
-      if (camera.position.z <= -200) {
+      if (camera.position.z <= -200&& camera.position.x<=0) {
         if (count1 >= 0) {
           count1--;
           mesh5.position.set(mesh5.position.x, 5, mesh5.position.z);
@@ -868,3 +869,4 @@ function addGridHelper() {
   var axis = new THREE.AxesHelper(1000);
   scene.add(axis);
 }
+
